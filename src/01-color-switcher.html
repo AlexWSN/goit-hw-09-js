@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Switcher</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <style>
+      /* CSS pentru a centra butoanele */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #fafafa;
+        transition: background-color 0.5s;
+      }
+
+      /* CSS pentru butonul "Go back" */
+      .go-back {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 16px;
+        text-decoration: none;
+        color: #000;
+        padding: 5px 10px;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Butonul "Go back" poziționat absolut în colțul din stânga sus -->
+    <a href="index.html" class="go-back">Go back</a>
+
+    <div class="button-container">
+      <button type="button" data-start>Start</button>
+      <button type="button" data-stop>Stop</button>
+    </div>
+
+    <script src="js/01-color-switcher.js" type="module"></script>
+  </body>
+</html>
