@@ -613,6 +613,6 @@ stopButton.addEventListener("click", ()=>{
     clearInterval(colorInterval);
 });
 
-},{}]},["j2RRb","cYUEh"], "cYUEh", "parcelRequired7c6")
+},{}]},["j2RRb","cYUEh"], "cYUEh", "parcelRequire94c2")
 
 //# sourceMappingURL=01-color-switcher.52e3b619.js.map

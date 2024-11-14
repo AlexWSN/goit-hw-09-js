@@ -1,3 +1,4 @@
+
 const startButton = document.querySelector('button[data-start]');
 const stopButton = document.querySelector('button[data-stop]');
 
@@ -32,3 +33,4 @@ stopButton.addEventListener('click', () => {
   // Oprește intervalul de schimbare a culorii
   clearInterval(colorInterval);
 });
+

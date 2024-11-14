@@ -585,6 +585,6 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"4M6V8":[function(require,module,exports) {
 
-},{}]},["lFB2s","4M6V8"], "4M6V8", "parcelRequired7c6")
+},{}]},["lFB2s","4M6V8"], "4M6V8", "parcelRequire94c2")
 
 //# sourceMappingURL=goit-hw-09-js.59712999.js.map

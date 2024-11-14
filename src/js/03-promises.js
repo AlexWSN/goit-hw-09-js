@@ -1,64 +1,44 @@
 import Notiflix from 'notiflix';
 
-
-// Selectează elementele din formular
-const form = document.querySelector('.form');
-const inputDelay = document.querySelector('input[name="delay"]');
-const inputStep = document.querySelector('input[name="step"]');
-const inputAmount = document.querySelector('input[name="amount"]');
-
 // Funcția care creează o promisiune
 function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3; // 70% șanse să fie îndeplinită
   return new Promise((resolve, reject) => {
-    const shouldResolve = Math.random() > 0.3; 
-
     setTimeout(() => {
       if (shouldResolve) {
-        resolve({ position, delay }); 
+        resolve({ position, delay }); // Promisiune îndeplinită
       } else {
-        reject({ position, delay }); 
+        reject({ position, delay }); // Promisiune respinsă
       }
-    }, delay); 
+    }, delay);
   });
 }
 
-// Funcția pentru formatarea numărului de două caractere
-function addLeadingZero(value) {
-  return String(value).padStart(2, '0');
-}
+// Selectează elementele din formular
+const form = document.querySelector('.form');
+const inputDelay = form.querySelector('input[name="delay"]');
+const inputStep = form.querySelector('input[name="step"]');
+const inputAmount = form.querySelector('input[name="amount"]');
 
-// Gestionarea evenimentului de submit al formularului
 form.addEventListener('submit', (event) => {
-  event.preventDefault();
+  event.preventDefault(); // Previne trimiterea formularului
 
-  // Obține valorile din formular
-  let delay = Number(inputDelay.value);
-  const step = Number(inputStep.value);
-  const amount = Number(inputAmount.value);
+  const firstDelay = Number(inputDelay.value); // Primul delay
+  const step = Number(inputStep.value); // Pașii între promisiuni
+  const amount = Number(inputAmount.value); // Numărul de promisiuni de creat
 
-  // Dezactivează butonul pentru a preveni trimiterea multiplă
-  const button = form.querySelector('button');
-  button.disabled = true;
-
-  // Creează promisiunile în funcție de cantitatea introdusă
+  // Crează promisiunile
   for (let i = 1; i <= amount; i++) {
+    const delay = firstDelay + step * (i - 1); // Calcul delay pentru fiecare promisiune
+
     createPromise(i, delay)
       .then(({ position, delay }) => {
-        // Afișează mesaj de succes cu notiflix sau console.log
+        // Mesaj de succes cu Notiflix
         Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        // Afișează mesaj de eșec cu notiflix sau console.log
+        // Mesaj de eroare cu Notiflix
         Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    
-    // Crește delay-ul pentru următoarea promisiune
-    delay += step;
   }
-
-  // Reactivarea butonului după ce s-au creat toate promisiunile
-  button.disabled = false;
-
-  // Curăță câmpurile formularului
-  form.reset();
 });
